@@ -29,7 +29,7 @@ public class ContactManager {
             }
         }
         if (contactList.isEmpty()){
-            throw new NullPointerException("Not found.");
+            throw new NullPointerException("Contact is not found.");
         }
 
     }
