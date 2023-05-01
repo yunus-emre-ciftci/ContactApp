@@ -28,7 +28,7 @@ public class ContactManager {
                 System.out.println(contact.toString());
             }
         }
-        if (contactList.isEmpty()){
+        if (contactList.isEmpty()) {
             throw new NullPointerException("Contact is not found.");
         }
 

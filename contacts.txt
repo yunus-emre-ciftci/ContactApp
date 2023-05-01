@@ -1,0 +1,3 @@
+Contact{fullName='e', phoneNumber='', eMail=''}
+Contact{fullName='e', phoneNumber='', eMail=''}
+Contact{fullName='e', phoneNumber='', eMail=''}
