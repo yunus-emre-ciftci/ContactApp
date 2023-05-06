@@ -1,3 +1,2 @@
-Contact{fullName='e', phoneNumber='', eMail=''}
-Contact{fullName='e', phoneNumber='', eMail=''}
-Contact{fullName='e', phoneNumber='', eMail=''}
+Contact{id=1fullName='Abdülkadir Kılınç', phoneNumber='0545233124', eMail='akadirkilinc@gmail.com'}
+Contact{id=2fullName='Yunus Emre Çiftçi', phoneNumber='0545233125', eMail='yunusemreciftci@gmail.com'}

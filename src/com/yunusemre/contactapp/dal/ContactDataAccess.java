@@ -1,4 +1,6 @@
-package contact;
+package com.yunusemre.contactapp.dal;
+
+import com.yunusemre.contactapp.domain.Contact;
 
 import java.util.ArrayList;
 

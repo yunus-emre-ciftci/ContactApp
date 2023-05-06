@@ -1,21 +1,28 @@
-package contact;
+package com.yunusemre.contactapp.domain;
 
 import java.util.Objects;
 
 public class Contact {
+    private int id;
     private String fullName;
     private String phoneNumber;
     private String eMail;
+    private static int idCounter;
+
+    public Contact(int id, String fullName, String phoneNumber, String eMail) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.eMail = eMail;
+        this.id = id;
+    }
 
     public Contact(String fullName, String phoneNumber, String eMail) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
+        this.id = idCounter++;
     }
 
-    public Contact(String fullName, String phoneNumber) {
-        this(fullName, phoneNumber, "");
-    }
 
     public Contact(String fullName) {
         this(fullName, "", "");
@@ -33,9 +40,14 @@ public class Contact {
         return phoneNumber;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
+                "id=" + id +
                 "fullName='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", eMail='" + eMail + '\'' +
