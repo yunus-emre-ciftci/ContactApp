@@ -27,7 +27,7 @@ public class ContactMemoryManager implements ContactDataAccess {
     }
 
     @Override
-    public ArrayList<Contact> findContactWithName(String name) {
+    public ArrayList<Contact> findContactByName(String name) {
         ArrayList<Contact> personList = new ArrayList<>();
         for (Contact contact : contactList) {
             if (contact.getFullName().contains(name)) {

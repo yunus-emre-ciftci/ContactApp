@@ -9,12 +9,13 @@ public interface ContactDataAccess {
 
     void printAll();
 
-    ArrayList<Contact> findContactWithName(String name);
+    ArrayList<Contact> findContactByName(String name);
 
     void removeContact(Contact contact);
 
     Contact deleteContact(Contact deleteContact);
 
     Contact updateContact(Contact contact, int id);
+
 
 }

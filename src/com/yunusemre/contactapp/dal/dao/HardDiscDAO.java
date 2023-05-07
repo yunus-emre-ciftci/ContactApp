@@ -21,6 +21,7 @@ public class HardDiscDAO implements ContactDataAccess {
             throw new RuntimeException(e);
         }
 
+
     }
 
     @Override
@@ -36,7 +37,7 @@ public class HardDiscDAO implements ContactDataAccess {
     }
 
     @Override
-    public ArrayList<Contact> findContactWithName(String name) {
+    public ArrayList<Contact> findContactByName(String name) {
         ArrayList<Contact> contactsList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("contacts.txt"))) {
             String line;
