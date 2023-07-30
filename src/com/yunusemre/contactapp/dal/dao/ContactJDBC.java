@@ -17,15 +17,19 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public void addContact(Contact newContact) {
-        String addQuery = "INSERT INTO t_informations_contact (full_name, e_mail, phone_number, contact_id) VALUES (?, ?, ?, ?)";
+        String addQuery = "INSERT INTO t_informations_contact (full_name, e_mail, phone_number) VALUES (?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(addQuery)) {
             preparedStatement.setString(1, newContact.getFullName());
             preparedStatement.setString(2, newContact.geteMail());
             preparedStatement.setString(3, newContact.getPhoneNumber());
-            preparedStatement.setInt(4, newContact.getId());
-
             int i = preparedStatement.executeUpdate();
+            if (i > 0){
+                System.out.println("Complete!");
+            }else {
+                System.out.println("Error!");
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
