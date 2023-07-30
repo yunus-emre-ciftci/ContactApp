@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ContactMemoryManager implements ContactDataAccess {
 
-    private List<Contact> contactList;
+    private final List<Contact> contactList;
 
     public ContactMemoryManager() {
         this.contactList = new ArrayList<Contact>();
@@ -58,8 +58,7 @@ public class ContactMemoryManager implements ContactDataAccess {
 
     @Override
     public Contact updateContact(Contact contact, int id) {
-        for (int i = 0; i < contactList.size(); i++) {
-            Contact contact1 = contactList.get(i);
+        for (Contact contact1 : contactList) {
             if (contact1.getId() == id) {
                 contact1.setFullName(contact.getFullName());
                 contact1.seteMail(contact.geteMail());

@@ -50,8 +50,6 @@ public class HardDiscDAO implements ContactDataAccess {
                     contactsList.add(contact);
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
