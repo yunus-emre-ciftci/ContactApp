@@ -7,7 +7,7 @@ public class Contact {
     private String fullName;
     private String phoneNumber;
     private String eMail;
-    private static int idCounter;
+    private static int idCounter = 1;
 
     public Contact(int id, String fullName, String phoneNumber, String eMail) {
         this.fullName = fullName;

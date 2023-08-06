@@ -16,16 +16,16 @@ public class DriverContactApp {
         Contact contact = new Contact("Hacı Karataş", "0545233123", "hacikaratas@gmail.com");
         Contact contact1 = new Contact("Abdülkadir Kılınç", "0545233124", "akadirkilinc@gmail.com");
         Contact contact2 = new Contact("Yunus Emre Çiftçi", "0545233125", "yunusemreciftci@gmail.com");
+        Contact contact3 = new Contact("Recep Çınar", "0545233126", "recepcinar@gmail.com");
         ContactJDBC contactJDBC = new ContactJDBC();
-        contactJDBC.addContact(contact);
+        //contactJDBC.addContact(contact);
+        contactJDBC.addContact(contact3);
 
        /* HardDiscDAO hardDiscDAO = new HardDiscDAO();
         ContactMemoryManager contactMemoryManager = new ContactMemoryManager();
         ContactService contactService = new ContactService(hardDiscDAO);
         contactService.printAll();
         */
-
-
     }
 
     public static void test2() {
