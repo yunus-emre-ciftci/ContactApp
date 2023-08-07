@@ -19,7 +19,8 @@ public class DriverContactApp {
         Contact contact3 = new Contact("Recep Çınar", "0545233126", "recepcinar@gmail.com");
         ContactJDBC contactJDBC = new ContactJDBC();
         //contactJDBC.addContact(contact);
-        contactJDBC.addContact(contact3);
+        //contactJDBC.addContact(contact3);
+        contactJDBC.printAll();
 
        /* HardDiscDAO hardDiscDAO = new HardDiscDAO();
         ContactMemoryManager contactMemoryManager = new ContactMemoryManager();

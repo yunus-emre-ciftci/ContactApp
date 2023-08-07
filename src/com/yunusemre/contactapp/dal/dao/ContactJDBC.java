@@ -3,10 +3,7 @@ package com.yunusemre.contactapp.dal.dao;
 import com.yunusemre.contactapp.dal.ContactDataAccess;
 import com.yunusemre.contactapp.domain.Contact;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ContactJDBC implements ContactDataAccess {
@@ -23,7 +20,7 @@ public class ContactJDBC implements ContactDataAccess {
             preparedStatement.setString(1, newContact.getFullName());
             preparedStatement.setString(2, newContact.geteMail());
             preparedStatement.setString(3, newContact.getPhoneNumber());
-            preparedStatement.setInt(4,newContact.getId());
+            preparedStatement.setInt(4, newContact.getId());
             int i = preparedStatement.executeUpdate();
             if (i > 0) {
                 System.out.println("Complete!");
@@ -38,7 +35,20 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public void printAll() {
-
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_informations_contact")
+        ) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String fullName = resultSet.getString("full_name");
+                String eMail = resultSet.getString("e_mail");
+                String phoneNumber = resultSet.getString("phone_Number");
+                int id = resultSet.getInt("contact_id");
+                System.out.println("Contact-id:" + id + " Name: " + fullName + " eMail: " + eMail + " Phone Number: " + phoneNumber);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
