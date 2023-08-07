@@ -58,13 +58,23 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public void removeContact(Contact contact) {
-
+        this.deleteContact(contact);
     }
 
     @Override
     public Contact deleteContact(Contact deleteContact) {
-        return null;
+        int i = 0;
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM t_informations_contact WHERE contact_id = ?");
+        ) {
+            preparedStatement.setInt(1, deleteContact.getId());
+            i = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (i > 0) ? deleteContact : null;
     }
+
 
     @Override
     public Contact updateContact(Contact contact, int id) {

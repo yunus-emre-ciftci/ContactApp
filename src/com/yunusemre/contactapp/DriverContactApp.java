@@ -21,6 +21,7 @@ public class DriverContactApp {
         //contactJDBC.addContact(contact);
         //contactJDBC.addContact(contact3);
         contactJDBC.printAll();
+        //contactJDBC.deleteContact(contact);
 
        /* HardDiscDAO hardDiscDAO = new HardDiscDAO();
         ContactMemoryManager contactMemoryManager = new ContactMemoryManager();
