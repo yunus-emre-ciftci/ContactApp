@@ -53,7 +53,25 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public ArrayList<Contact> findContactByName(String name) {
-        return null;
+        ArrayList<Contact> arrayList = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_informations_contact WHERE full_name = ?")
+        ) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String fullName = resultSet.getString("full_name");
+                int contactId = resultSet.getInt("contact_id");
+                String eMail = resultSet.getString("e_mail");
+                String phoneNumber = resultSet.getString("phone_number");
+                Contact contact = new Contact(contactId, fullName, phoneNumber, eMail);
+                arrayList.add(contact);
+                System.out.println("Name found. id: " + contactId + " Full Name: " + fullName + " e-Mail: " + eMail + " Phone Number:" + phoneNumber);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
     }
 
     @Override
@@ -78,7 +96,17 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public Contact updateContact(Contact contact, int id) {
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        connection.prepareStatement()
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE t_informations_contact SET full_name = ?, e_mail = ?, phone_number = ? WHERE contact_id = ?")) {
+            preparedStatement.setString(1, contact.getFullName());
+            preparedStatement.setString(2, contact.geteMail());
+            preparedStatement.setString(3, contact.getPhoneNumber());
+            preparedStatement.setInt(4, id);
+            boolean execute = preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contact;
+
     }
 }
