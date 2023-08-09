@@ -78,6 +78,7 @@ public class ContactJDBC implements ContactDataAccess {
 
     @Override
     public Contact updateContact(Contact contact, int id) {
-        return null;
+        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
+        connection.prepareStatement()
     }
 }
